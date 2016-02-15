@@ -1,0 +1,55 @@
+extends layout
+
+block content
+  style.
+    *{
+      margin:0;
+      padding:0;
+    }
+    h1{
+      width:200px;
+      height:50px;
+    }
+    p{
+      width:100px;
+      height:100px;
+      background-color:red;
+    }
+    .hide{
+      display:none!important;
+    }
+  h1= title
+  p Welcome to #{title}
+  p Welcome to #{title}
+  p Welcome to #{title}
+  p Welcome to #{title}
+  p Welcome to #{title}
+  p Welcome to #{title}
+  p Welcome to #{title}
+  p Welcome to #{title}
+  p Welcome to #{title}
+  p.target Welcome to #{title}
+  
+  p.hide Welcome to #{title}
+  p.hide Welcome to #{title}
+  p.hide Welcome to #{title}
+  p.hide Welcome to #{title}
+  p.hide Welcome to #{title}
+  p.hide Welcome to #{title}
+  p.hide Welcome to #{title}
+  p.hide Welcome to #{title}
+  script.
+    var $target = $('.target');
+    
+    $(window).scroll( function() { 
+    
+      if($(window).scrollTop() > $target.offset().top - $(window).height()){
+        console.log("ok");
+        console.log("$(window).scrollTop()===========>",$(window).scrollTop());
+        console.log("$target.offset().top - $(window).height()===========>",$target.offset().top - $(window).height());
+        setTimeout(function(){
+          $("p.hide").removeClass("hide");
+        },1000)
+        
+      }
+    } );
