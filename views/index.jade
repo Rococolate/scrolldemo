@@ -6,20 +6,37 @@ block content
       margin:0;
       padding:0;
     }
+    body{
+     position:relative;
+    }
     h1{
       width:200px;
-      height:50px;
+      height:500px;
+      background-color:blue;
     }
     p{
       width:100px;
       height:100px;
-      background-color:red;
+      
     }
     .hide{
       display:none!important;
     }
+    .right{
+      margin-left:auto;
+      position:relative;
+    }
+    .inner{
+      display:block;
+      background-color:red;
+      width:100px;
+      height:100px;
+      position:relative;
+    }
   h1= title
-  p Welcome to #{title}
+
+  p.right
+    span.inner Welcome to #{title}
   p Welcome to #{title}
   p Welcome to #{title}
   p Welcome to #{title}
@@ -43,13 +60,22 @@ block content
     
     $(window).scroll( function() { 
     
-      if($(window).scrollTop() > $target.offset().top - $(window).height()){
-        console.log("ok");
+      //- if($(window).scrollTop() > $target.offset().top - $(window).height()){
+      //-   console.log("ok");
         console.log("$(window).scrollTop()===========>",$(window).scrollTop());
-        console.log("$target.offset().top - $(window).height()===========>",$target.offset().top - $(window).height());
-        setTimeout(function(){
-          $("p.hide").removeClass("hide");
-        },1000)
+      //-   console.log("$target.offset().top - $(window).height()===========>",$target.offset().top - $(window).height());
+      //-   setTimeout(function(){
+      //-     $("p.hide").removeClass("hide");
+      //-   },1000)
         
+      //- }
+      console.log("$('.right').offset().top==========>",$(".right").offset().top);
+      var offset = $(".right").offset();
+
+      if($(window).scrollTop() >= $(".right").offset().top - 30){
+        $(".inner").css({"position":"fixed","top":30 + "px" , "left":offset.left + "px"});
+      }else{
+        $(".inner").css({"position":"relative","top":"0" , "left":"0"});
       }
+
     } );
